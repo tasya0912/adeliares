@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+
+    <div class="card">
+        <h1>🎉 Selamat Ulang Tahun! 🎂</h1>
+        <p>Semoga  diumur yang segini ngga tambah bandel ya, jangan buat masalah terus, maaf ya ucapinnya telat. Baik baik adekk <p>
+        <p>From,</p>
+        <p><strong>[Kakak Cantikmu 😍❤]</strong></p>
+        
+        <!-- Tombol Bagikan -->
+        <button onclick="share()">Bagikan</button>
+        
+        <!-- Tombol Musik -->
+        <button id="music-btn" onclick="toggleMusic()">🎵 Putar Musik</button>
+        
+        <!-- Audio -->
+        <audio id="bg-music" loop>
+            <source src="Monokrom.mp3" type="audio/mpeg">
+            Browser Anda tidak mendukung elemen audio.
+        </audio>
+    </div>
+
+    <script>
+        function share() {
+            const text = "🎉 Selamat Ulang Tahun! Semoga harimu penuh kebahagiaan! 🎂🥳";
+            if (navigator.share) {
+                navigator.share({
+                    title: "Ucapan Ulang Tahun",
+                    text: text,
+                    url: window.location.href
+                }).then(() => console.log("Berhasil dibagikan"))
+                .catch((error) => console.log("Gagal berbagi", error));
+            } else {
+                alert("Browser kamu tidak mendukung fitur berbagi otomatis.");
+            }
+        }
+
+        function toggleMusic() {
+            var music = document.getElementById("bg-music");
+            var button = document.getElementById("music-btn");
+            if (music.paused) {
+                music.play();
+                button.innerHTML = "⏸ Pause Musik";
+            } else {
+                music.pause();
+                button.innerHTML = "🎵 Putar Musik";
+            }
+        }
+    </script>
+</body>
+</html>
